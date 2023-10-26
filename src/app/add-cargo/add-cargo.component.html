@@ -1,0 +1,48 @@
+<div class="container p-4">
+    <h3>Add new cargo</h3>
+
+    <form class="row" [formGroup]="addForm" (ngSubmit)="saveCargo()">
+        <div class="col-12 col-lg-4 mb-4">
+            <label class="mb-2">Location</label>
+            <input type="text" class="form-control" formControlName="location" [class.is-invalid]="addForm.get('location')?.invalid && (
+                addForm.get('location')?.touched || addForm.get('location')?.dirty
+            )">
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+            <label class="mb-2">Cargo Type</label>
+            <select class="form-control" formControlName="cargo_type" [class.is-invalid]="addForm.get('cargo_type')?.invalid && (
+                addForm.get('cargo_type')?.touched || addForm.get('location')?.dirty
+            )">
+                <option value="">Choose</option>
+                <option [value]="item" *ngFor="let item of cargoTypes">{{ item }}</option>
+            </select>
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+            <label class="mb-2">Cargo Weight</label>
+            <input type="number" class="form-control" formControlName="cargo_weight" [class.is-invalid]="addForm.get('cargo_weight')?.invalid && (
+                addForm.get('cargo_weight')?.touched || addForm.get('location')?.dirty
+            )">
+        </div>
+        <div class="col-12 mb-4" formGroupName="dimensions">
+            <label class="mb-2">Dimensions (L x W x H)</label>
+            <div class="row">
+                <div class="col">
+                    <input type="number" class="form-control" formControlName="l" [class.is-invalid]="addForm.get('dimensions')?.get('l')?.invalid && (
+                        addForm.get('dimensions')?.get('l')?.touched || addForm.get('dimensions')?.get('l')?.dirty
+                    )">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" formControlName="w" [class.is-invalid]="addForm.get('dimensions')?.get('w')?.invalid && (
+                        addForm.get('dimensions')?.get('w')?.touched || addForm.get('dimensions')?.get('w')?.dirty
+                    )">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" formControlName="h" [class.is-invalid]="addForm.get('dimensions')?.get('h')?.invalid && (
+                        addForm.get('dimensions')?.get('h')?.touched || addForm.get('dimensions')?.get('h')?.dirty
+                    )">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success btn-lg" type="submit" [disabled]="addForm.invalid">Add Cargo</button>
+    </form>
+</div>

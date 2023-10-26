@@ -1,0 +1,33 @@
+<div class="container py-4">
+    <h1>Search for cargo information</h1>
+    <hr />
+
+    <!-- Search fields -->
+    <form class="row mb-5" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <div class="col-9">
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="q" [class.is-invalid]="searchForm.get('q')?.invalid && (
+                    searchForm.get('q')?.touched || searchForm.get('q')?.dirty || submitted
+                )" (keyup)="onSearch()">
+                <div class="text-danger" *ngIf="searchForm.get('q')?.invalid && (
+                    searchForm.get('q')?.touched || searchForm.get('q')?.dirty || submitted
+                )">Enter a search term</div>
+            </div>
+        </div>
+        <div class="col-3 d-grid">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search fa-fw"></i>
+            </button>
+        </div>
+    </form>
+
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action" *ngFor="let cargo of cargoList">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><i class="fa fa-cube fa-fw"></i> {{cargo.cargo_type}}</h5>
+                <small class="text-body-secondary">Weight: {{cargo.cargo_weight}} tonnes</small>
+            </div>
+            <p class="mb-1"><i class="fa fa-map-marker fa-fw"></i>Located in {{cargo.location}}</p>
+        </a>
+    </div>
+</div>
