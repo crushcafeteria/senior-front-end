@@ -14,3 +14,10 @@ export interface MenuType {
     url: string;
 }
 
+export interface TransporterType {
+    name: string;
+    location:string;
+    cargo_types: string[];
+    max_weight: number;
+}
+

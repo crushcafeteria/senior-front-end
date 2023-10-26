@@ -17,6 +17,10 @@ export class NavbarComponent {
     {
       label: 'Add Cargo',
       url: 'add-cargo'
+    },
+    {
+      label: 'Transporter List',
+      url: 'transporter-list'
     }
   ]
 }

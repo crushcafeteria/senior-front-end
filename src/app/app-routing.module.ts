@@ -1,3 +1,4 @@
+import { TransporterListComponent } from './transporter-list/transporter-list.component';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { AddCargoComponent } from './add-cargo/add-cargo.component';
@@ -16,6 +17,9 @@ const ROUTES: Route[] = [
   {
     path: 'add-cargo',
     component: AddCargoComponent
+  },{
+    path: 'transporter-list',
+    component: TransporterListComponent
   }
 ];
 

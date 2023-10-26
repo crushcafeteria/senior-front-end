@@ -2,6 +2,10 @@
     <h1>Search for cargo information</h1>
     <hr />
 
+    <div class="alert alert-success" role="alert" *ngIf="nag">
+        Cargo information successfully added
+      </div>
+
     <!-- Search fields -->
     <form class="row mb-5" [formGroup]="searchForm" (ngSubmit)="onSearch()">
         <div class="col-9">

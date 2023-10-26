@@ -1,0 +1,48 @@
+<div class="container py-4">
+    <h1>List of transporters</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th>
+                Transporter Name
+                <button class="btn btn-sm" title="Sort by this column in desc order" *ngIf="order === 'asc'" (click)="sortTransporters('name', 'desc')">
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <button class="btn btn-sm" title="Sort by this column in desc order" *ngIf="order === 'desc'" (click)="sortTransporters('name', 'asc')">
+                    <i class="fa fa-caret-up"></i>
+                </button>
+            </th>
+            <th>
+                Location
+                <button class="btn btn-sm" title="Sort by this column in desc order" *ngIf="order === 'asc'" (click)="sortTransporters('location', 'desc')">
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <button class="btn btn-sm" title="Sort by this column in desc order" *ngIf="order === 'desc'" (click)="sortTransporters('location', 'asc')">
+                    <i class="fa fa-caret-up"></i>
+                </button>
+            </th>
+            <th>
+                Cargo Types
+            </th>
+            <th>Max Weight
+                <button class="btn btn-sm" title="Sort by this column in desc order" *ngIf="order === 'asc'" (click)="sortTransporters('max_weight', 'desc')">
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <button class="btn btn-sm" title="Sort by this column in desc order" *ngIf="order === 'desc'" (click)="sortTransporters('max_weight', 'asc')">
+                    <i class="fa fa-caret-up"></i>
+                </button>
+            </th>
+          </tr>
+          <tr *ngFor="let transporter of transporters">
+            <td>{{transporter.name}}</td>
+            <td>{{transporter.location}}</td>
+            <td>
+                {{transporter.cargo_types}}
+            </td>
+            <td>{{transporter.max_weight}}</td>
+          </tr>
+        </table>
+      </div>
+
+</div>
