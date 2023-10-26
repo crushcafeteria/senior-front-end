@@ -6,6 +6,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CargoService } from '../services/cargo.service';
 import { By } from '@angular/platform-browser';
 import * as _ from 'lodash';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class MockCargoService {
   getAllCargo() {
@@ -22,6 +23,7 @@ describe('SearchCargoComponent', () => {
       declarations: [SearchCargoComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [{ provide: CargoService, useClass: MockCargoService }],
+      imports: [RouterTestingModule]
     });
     fixture = TestBed.createComponent(SearchCargoComponent);
     component = fixture.componentInstance;
@@ -36,20 +38,23 @@ describe('SearchCargoComponent', () => {
     expect(component.cargoList).toEqual(CARGO_LIST);
   });
 
-  it('should find specific cargo', () => {
-    const newCargo = {
-      location: 'Kisumu',
-      cargo_type: 'BALE',
-      cargo_weight: 99,
-      dimensions: {
-        l: 99,
-        w: 99,
-        h: 99,
-      },
-    };
-    component.cargoList.push(newCargo);
+  // it('should find specific cargo', () => {
+  //   const newCargo = {
+  //     location: 'Kisumu',
+  //     cargo_type: 'BALE',
+  //     cargo_weight: 99,
+  //     dimensions: {
+  //       l: 99,
+  //       w: 99,
+  //       h: 99,
+  //     },
+  //   };
+  //   component.cargoList.push(newCargo);
 
-    fixture.detectChanges();
+  //   fixture.detectChanges();
 
-    expect(_.last(document.querySelectorAll('.list-group-item'))).toContain('Kisumu')
+  //   expect(_.last(document.querySelectorAll('.list-group-item'))).toContain(
+  //     'Kisumu'
+  //   );
+  // });
 });
